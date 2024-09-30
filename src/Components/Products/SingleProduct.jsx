@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
+import { cartFun } from "../../Features/CartSlice/CartSlice";
+import { wishFun } from "../../Features/WishSlice/WishSlice";
 
 function SingleProduct() {
   const productId = useParams();
   const { id } = productId;
 
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
+
+  function handleCart() {
+    dispatch(cartFun(value));
+  }
+
+  function hanleWish() {
+    dispatch(wishFun(value));
+  }
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -57,6 +69,35 @@ function SingleProduct() {
               Rating:- {rating && rating.rate}
             </li>
           </ul>
+
+          <div className="mt-3" style={{ gap: "10px", display: "flex" }}>
+            <button
+              onClick={handleCart}
+              className="w-50  p-2"
+              style={{
+                border: "none",
+                backgroundColor: "green",
+                color: "white",
+                borderRadius: "10px",
+                fontSize: "13px"
+              }}
+            >
+              Add Cart
+            </button>
+            <button
+              onClick={hanleWish}
+              className="w-50 p-2"
+              style={{
+                border: "none",
+                backgroundColor: "pink",
+                color: "black",
+                borderRadius: "10px",
+                fontSize: "13px"
+              }}
+            >
+              Favorite
+            </button>
+          </div>
         </div>
       </div>
     </>

@@ -11,9 +11,9 @@ import {
 } from "mdb-react-ui-kit";
 import { useDispatch } from "react-redux";
 import { deleteFun } from "../../Features/CartSlice/CartSlice";
+import { Link } from "react-router-dom";
 
 function ItemCart(props) {
-
   const dispatch = useDispatch();
   const { title, image, category, price, rating, qunatity, id } =
     props.valueItem;
@@ -28,18 +28,20 @@ function ItemCart(props) {
         <MDBCardBody className="p-4">
           <MDBRow className="justify-content-between align-items-center">
             <MDBCol md="2" lg="2" xl="2">
-              <MDBCardImage
-                className="rounded-3"
-                style={{
-                  width: "95px",
-                  height: "95px",
-                  aspectRatio: "3/2",
-                  objectFit: "contain"
-                }}
-                fluid
-                src={image}
-                alt="Cotton T-shirt"
-              />
+              <Link to={`/singleproduct/${id}`}>
+                <MDBCardImage
+                  className="rounded-3"
+                  style={{
+                    width: "95px",
+                    height: "95px",
+                    aspectRatio: "3/2",
+                    objectFit: "contain"
+                  }}
+                  fluid
+                  src={image}
+                  alt="Cotton T-shirt"
+                />
+              </Link>
             </MDBCol>
             <MDBCol md="3" lg="3" xl="3">
               <p

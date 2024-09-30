@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBTypography
-} from "mdb-react-ui-kit";
+    MDBBtn,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBCol,
+    MDBContainer,
+    MDBIcon,
+    MDBInput,
+    MDBRow,
+    MDBTypography,
+  } from "mdb-react-ui-kit";
 import ItemCart from "./ItemCart";
 import { useSelector } from "react-redux";
 

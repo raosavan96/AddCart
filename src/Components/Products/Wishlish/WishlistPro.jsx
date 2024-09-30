@@ -10,6 +10,7 @@ import {
 } from "mdb-react-ui-kit";
 import { useDispatch } from "react-redux";
 import { wishDelete } from "../../../Features/WishSlice/WishSlice";
+import { Link } from "react-router-dom";
 
 function WishlistPro(props) {
   const { title, image, category, price, rating, id } = props.value;
@@ -25,18 +26,20 @@ function WishlistPro(props) {
         <MDBCardBody className="p-4">
           <MDBRow className="justify-content-between align-items-center">
             <MDBCol md="2" lg="2" xl="2">
-              <MDBCardImage
-                className="rounded-3"
-                style={{
-                  width: "95px",
-                  height: "95px",
-                  aspectRatio: "3/2",
-                  objectFit: "contain"
-                }}
-                fluid
-                src={image}
-                alt="Cotton T-shirt"
-              />
+              <Link to={`/singleproduct/${id}`}>
+                <MDBCardImage
+                  className="rounded-3"
+                  style={{
+                    width: "95px",
+                    height: "95px",
+                    aspectRatio: "3/2",
+                    objectFit: "contain"
+                  }}
+                  fluid
+                  src={image}
+                  alt="Cotton T-shirt"
+                />
+              </Link>
             </MDBCol>
             <MDBCol md="2" lg="2" xl="2">
               <p

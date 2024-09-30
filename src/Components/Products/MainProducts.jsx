@@ -5,8 +5,8 @@ function MainProducts(props) {
   const { productData } = props;
   return (
     <>
-      <h2>Products</h2>
       <div className="container">
+        <h3 className="mt-3">Products</h3>
         <div>
           <div className="row">
             {productData.map((value, index) => (
