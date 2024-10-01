@@ -59,7 +59,7 @@ export default function ProductCards() {
                 <MDBCard>
                   <MDBCardBody>
                     <MDBBtn className="ms-3" color="warning" block size="lg">
-                      Apply
+                      continue to order place
                     </MDBBtn>
                   </MDBCardBody>
                 </MDBCard>

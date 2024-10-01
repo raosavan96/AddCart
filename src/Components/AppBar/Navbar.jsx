@@ -19,11 +19,12 @@ function Navbar() {
   return (
     <>
       <>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-md bg-body-tertiary">
+          <div className="container-fluid " style={{position:"relative"}}>
             <Link className="navbar-brand" to="#">
               Navbar
             </Link>
+
             <button
               className="navbar-toggler"
               type="button"
@@ -83,11 +84,6 @@ function Navbar() {
                     </li>
                   </ul>
                 </li>
-                <li className="nav-item">
-                  <Link className="nav-link disabled" aria-disabled="true">
-                    Disabled
-                  </Link>
-                </li>
               </ul>
 
               <form className="d-flex" role="search">
@@ -101,35 +97,31 @@ function Navbar() {
                   Search
                 </button>
               </form>
+            </div>
+            <div className="res_icons">
+              <Link to="/wish">
+                <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                >
+                  <Badge badgeContent={countWish} color="error">
+                    <Favorite sx={{ color: "#000" }} />
+                  </Badge>
+                </IconButton>
+              </Link>
 
-              <ul className="navbar-nav ms-3 ">
-                <li className="nav-item">
-                  <Link to="/wish">
-                    <IconButton
-                      size="large"
-                      aria-label="show 4 new mails"
-                      color="inherit"
-                    >
-                      <Badge badgeContent={countWish} color="error">
-                        <Favorite sx={{ color: "#000" }} />
-                      </Badge>
-                    </IconButton>
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/cart">
-                    <IconButton
-                      size="large"
-                      aria-label="show 4 new mails"
-                      color="inherit"
-                    >
-                      <Badge badgeContent={countItem} color="error">
-                        <ShoppingCartIcon sx={{ color: "#000" }} />
-                      </Badge>
-                    </IconButton>
-                  </Link>
-                </li>
-              </ul>
+              <Link to="/cart">
+                <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                >
+                  <Badge badgeContent={countItem} color="error">
+                    <ShoppingCartIcon sx={{ color: "#000" }} />
+                  </Badge>
+                </IconButton>
+              </Link>
             </div>
           </div>
         </nav>

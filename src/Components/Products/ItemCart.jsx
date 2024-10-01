@@ -58,7 +58,7 @@ function ItemCart(props) {
                   }}
                   fluid
                   src={image}
-                  alt="Cotton T-shirt"
+                  alt={title}
                 />
               </Link>
             </MDBCol>

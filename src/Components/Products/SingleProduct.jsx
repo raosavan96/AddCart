@@ -42,7 +42,7 @@ function SingleProduct() {
         className="d-flex align-items-center justify-content-center "
       >
         <div
-          className="card container position-relative"
+          className="card container position-relative single_cards"
           style={{ padding: "15px" }}
         >
           <Link to="/">
@@ -57,14 +57,14 @@ function SingleProduct() {
             />
           </Link>
 
-          <div className="d-flex">
-            <div
+          <div className="d-flex single_page">
+            <div className="div_1"
               style={{
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                width: "280px",
-                height: "280px",
+                width: "25%",
+                height: "auto",
                 margin: "0 20px"
               }}
             >
@@ -79,7 +79,7 @@ function SingleProduct() {
                 alt="..."
               />
             </div>
-            <div className="card-body">
+            <div className="card-body div_2" style={{width:"75%"}}>
               <h4 className="card-title">{title}</h4>
               <p style={{ fontSize: "11px" }} className="card-text">
                 {description}
@@ -92,9 +92,9 @@ function SingleProduct() {
                 <li style={{ fontSize: "12px", listStyle: "none" }}>
                   Price:- {`$${price}`}
                 </li>
-                <li style={{ fontSize: "12px", listStyle: "none" }}>
-                  {/* Rating:- {rating && rating.rate} */}
-                  <Rating initialValue={rating && rating.rate} />
+                <li style={{ fontSize: "12px", listStyle: "none", margin:"15px auto 0" , display:"flex", justifyContent:"center"}}>
+                 
+                  <Rating initialValue={rating && rating.rate} size={20} />
                 </li>
               </ul>
 

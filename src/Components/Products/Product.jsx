@@ -35,13 +35,14 @@ export default function Product(props) {
 
   return (
     <>
-      <div className="col-md-4 mt-4">
+      <div className="col-lg-3 col-md-4 col-sm-6 col-12 mt-4">
         <Card
           sx={{
             maxWidth: 300,
             height: 330,
             overflow: "hidden",
-            position: "relative"
+            position: "relative",
+            margin: "0 auto"
           }}
         >
           <Rating
@@ -68,10 +69,10 @@ export default function Product(props) {
                 padding: "10px"
               }}
               image={image}
-              title="green iguana"
+              title={title}
             />
           </Link>
-          <CardContent>
+          <CardContent className="pt-0">
             <Typography
               gutterBottom
               variant="h6"
@@ -83,7 +84,7 @@ export default function Product(props) {
 
             <Typography
               variant="body2"
-              sx={{ color: "text.secondary", fontSize: "11px" }}
+              sx={{ color: "text.secondary", fontSize: "12px" }}
             >
               {category}
             </Typography>
@@ -91,12 +92,13 @@ export default function Product(props) {
           <CardActions
             sx={{
               position: "absolute",
-              bottom: "15px",
+              bottom: "5px",
               width: "100%",
               justifyContent: "space-around"
             }}
           >
             <Button
+              className="add_more"
               onClick={handleCart}
               variant="containd"
               style={{ backgroundColor: "#ffc107" }}
@@ -106,6 +108,7 @@ export default function Product(props) {
             </Button>
             <Link to={`/singleproduct/${id}`}>
               <Button
+                className="add_more"
                 variant="containd "
                 color="warning"
                 size="small"

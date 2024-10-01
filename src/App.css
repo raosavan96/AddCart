@@ -1,0 +1,27 @@
+@media screen and (max-width: 1200px) {
+  .add_more {
+    font-size: 12px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .res_icons {
+    position: absolute;
+    right: 80px;
+  }
+
+  .single_page {
+    flex-direction: column;
+  }
+
+  .div_1  {
+    width: 85% !important;
+  }
+  .div_2 {
+    width: 90% !important;
+    margin-top: 25px;
+  }
+  .single_cards {
+    width: 90% !important;
+  }
+}

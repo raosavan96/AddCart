@@ -6,6 +6,7 @@ import MainProducts from "./Components/Products/MainProducts";
 import Cart from "./Components/Products/Cart";
 import Wishlist from "./Components/Products/Wishlish/Wishlist";
 import SingleProduct from "./Components/Products/SingleProduct";
+import "./App.css"
 
 function App() {
   const [product, setProduct] = useState([]);
