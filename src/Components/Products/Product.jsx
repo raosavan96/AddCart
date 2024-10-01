@@ -9,13 +9,18 @@ import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartFun } from "../../Features/CartSlice/CartSlice";
 import { wishFun } from "../../Features/WishSlice/WishSlice";
 export default function Product(props) {
   const { title, category, image, id } = props.data;
 
   const { data } = props;
+  const { wishItems } = props;
+
+  const isWished = wishItems.some(
+    (item) => item.id === id && item.checkItem === "false"
+  );
 
   const dispatch = useDispatch();
 
@@ -39,6 +44,7 @@ export default function Product(props) {
           }}
         >
           <Checkbox
+            checked={isWished}
             onClick={handleWish}
             icon={<FavoriteBorder />}
             checkedIcon={<Favorite color="error" />}
@@ -46,9 +52,9 @@ export default function Product(props) {
           <Link to={`/singleproduct/${id}`}>
             <CardMedia
               sx={{
-                height: 80,
+                height: 135,
                 objectFit: "cover",
-                width: 80,
+                width: 135,
                 aspectRatio: "3/2",
                 mixBlendMode: "darken",
                 backgroundSize: "contain",
@@ -63,7 +69,7 @@ export default function Product(props) {
             <Typography
               gutterBottom
               variant="h6"
-              sx={{ fontSize: "15px" }}
+              sx={{ fontSize: "13px" }}
               component="div"
             >
               {title}
@@ -75,17 +81,29 @@ export default function Product(props) {
               {category}
             </Typography>
           </CardContent>
-          <CardActions sx={{ position: "absolute", bottom: "15px" }}>
+          <CardActions
+            sx={{
+              position: "absolute",
+              bottom: "15px",
+              width: "100%",
+              justifyContent: "space-around"
+            }}
+          >
             <Button
               onClick={handleCart}
               variant="containd"
-              color="success"
+              style={{ backgroundColor: "#ffc107" }}
               size="small"
             >
               Add cart
             </Button>
             <Link to={`/singleproduct/${id}`}>
-              <Button variant="containd " color="warning" size="small">
+              <Button
+                variant="containd "
+                color="warning"
+                size="small"
+                style={{ backgroundColor: "#009688", color: "#fff" }}
+              >
                 More info
               </Button>
             </Link>

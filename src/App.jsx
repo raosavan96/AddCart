@@ -14,7 +14,7 @@ function App() {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setProduct(data);
       })
       .catch((error) => {
@@ -27,9 +27,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route
-            path="/products"
+            path="/"
             element={<MainProducts productData={product} />}
           />
           <Route path="/cart" element={<Cart />} />

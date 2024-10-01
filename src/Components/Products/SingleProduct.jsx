@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { cartFun } from "../../Features/CartSlice/CartSlice";
 import { wishFun } from "../../Features/WishSlice/WishSlice";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 function SingleProduct() {
   const productId = useParams();
@@ -23,7 +24,6 @@ function SingleProduct() {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
       .then((singleData) => {
-        console.log(singleData);
         setValue(singleData);
       })
       .catch((error) => {
@@ -37,14 +37,29 @@ function SingleProduct() {
     <>
       <div
         style={{ width: "100%", height: "100vh" }}
-        className="d-flex align-items-center justify-content-center"
+        className="d-flex align-items-center justify-content-center "
       >
-        <div className="card" style={{ width: "18rem", padding: "15px" }}>
+        <div
+          className="card position-relative"
+          style={{ width: "18rem", padding: "15px" }}
+        >
+          <Link to="/">
+            <HighlightOffIcon
+              style={{
+                color: "black",
+                position: "absolute",
+                top: "5px",
+                right: "5px",
+                color: "black"
+              }}
+            />
+          </Link>
+
           <img
             src={image}
             style={{
-              width: "140px",
-              height: "140px",
+              width: "180px",
+              height: "180px",
               objectFit: "contain",
               aspectRatio: "3/2",
               margin: "0 auto 0"
@@ -76,8 +91,8 @@ function SingleProduct() {
               className="w-50  p-2"
               style={{
                 border: "none",
-                backgroundColor: "green",
-                color: "white",
+                backgroundColor: "#ffc107",
+                color: "#000",
                 borderRadius: "10px",
                 fontSize: "13px"
               }}

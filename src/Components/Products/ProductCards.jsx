@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import {
-    MDBBtn,
-    MDBCard,
-    MDBCardBody,
-    MDBCardImage,
-    MDBCol,
-    MDBContainer,
-    MDBIcon,
-    MDBInput,
-    MDBRow,
-    MDBTypography,
-  } from "mdb-react-ui-kit";
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBTypography
+} from "mdb-react-ui-kit";
 import ItemCart from "./ItemCart";
 import { useSelector } from "react-redux";
 
@@ -18,9 +15,9 @@ export default function ProductCards() {
   const itemCartDate = useSelector((state) => state.cart.value);
 
   return (
-    <section className="vh-100" style={{ backgroundColor: "#eee" }}>
-      <MDBContainer className="py-5 h-100">
-        <MDBRow className="justify-content-center align-items-center h-100">
+    <section style={{ height: "100%" }}>
+      <MDBContainer className="py-5 ">
+        <MDBRow className="justify-content-center align-items-center">
           <MDBCol md="10">
             {itemCartDate.length === 0 ? (
               <h3 className="text-center mt-5" style={{ color: "black" }}>

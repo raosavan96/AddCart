@@ -8,7 +8,7 @@ import {
   MDBRow,
   MDBTypography
 } from "mdb-react-ui-kit";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { wishDelete } from "../../../Features/WishSlice/WishSlice";
 import { Link } from "react-router-dom";
 
@@ -16,6 +16,7 @@ function WishlistPro(props) {
   const { title, image, category, price, rating, id } = props.value;
 
   const dispatch = useDispatch();
+
 
   function handleWish() {
     dispatch(wishDelete(id));

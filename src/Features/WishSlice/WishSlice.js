@@ -12,8 +12,9 @@ export const wishSlice = createSlice({
       const wishItems = state.value.findIndex(
         (value) => value.id === action.payload.id
       );
+
       if (wishItems === -1) {
-        state.value.push({ ...action.payload });
+        state.value.push({ ...action.payload, checkItem: "false" });
       }
     },
 

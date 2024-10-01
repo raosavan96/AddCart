@@ -1,3 +1,12 @@
 body {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
-  }
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+height: 100vh !important;
+background-color: #eee !important;
+  overflow: hidden !important;
+}
+
+#root {
+  height: 100%;
+  overflow: scroll;
+  width: 100%;
+}

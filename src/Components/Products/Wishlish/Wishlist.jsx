@@ -7,9 +7,9 @@ export default function Wishlist() {
   const wishProducts = useSelector((state) => state.wish.value);
 
   return (
-    <section className="vh-100" style={{ backgroundColor: "#eee" }}>
-      <MDBContainer className="py-5 h-100">
-        <MDBRow className="justify-content-center align-items-center h-100">
+    <section style={{  height:"100%" }}>
+      <MDBContainer className="py-5">
+        <MDBRow className="justify-content-center align-items-center ">
           <MDBCol md="10">
             {wishProducts.length === 0 ? (
               <h3 className="text-center mt-5" style={{ color: "black" }}>
