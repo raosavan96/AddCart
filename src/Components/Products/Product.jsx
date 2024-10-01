@@ -12,14 +12,15 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartFun } from "../../Features/CartSlice/CartSlice";
 import { wishFun } from "../../Features/WishSlice/WishSlice";
+import { Rating } from "react-simple-star-rating";
 export default function Product(props) {
-  const { title, category, image, id } = props.data;
+  const { title, category, image, id, rating } = props.data;
 
   const { data } = props;
   const { wishItems } = props;
 
   const isWished = wishItems.some(
-    (item) => item.id === id && item.checkItem === "false"
+    (item) => item.id === id && item.checkItem === true
   );
 
   const dispatch = useDispatch();
@@ -43,6 +44,11 @@ export default function Product(props) {
             position: "relative"
           }}
         >
+          <Rating
+            style={{ position: "absolute", top: "5px", right: "8px" }}
+            initialValue={rating && rating.rate}
+            size={18}
+          />
           <Checkbox
             checked={isWished}
             onClick={handleWish}
@@ -74,6 +80,7 @@ export default function Product(props) {
             >
               {title}
             </Typography>
+
             <Typography
               variant="body2"
               sx={{ color: "text.secondary", fontSize: "11px" }}

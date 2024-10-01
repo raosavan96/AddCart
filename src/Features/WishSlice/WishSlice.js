@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: []
+  value: JSON.parse(localStorage.getItem("products")) || []
 };
 
 export const wishSlice = createSlice({
@@ -14,12 +14,14 @@ export const wishSlice = createSlice({
       );
 
       if (wishItems === -1) {
-        state.value.push({ ...action.payload, checkItem: "false" });
+        state.value.push({ ...action.payload, checkItem: true });
+        localStorage.setItem("products", JSON.stringify(state.value));
       }
     },
 
     wishDelete: (state, action) => {
       state.value = state.value.filter((value) => value.id !== action.payload);
+       localStorage.setItem("products", JSON.stringify(state.value));
     }
   }
 });

@@ -4,12 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import { cartFun } from "../../Features/CartSlice/CartSlice";
 import { wishFun } from "../../Features/WishSlice/WishSlice";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { Rating } from "react-simple-star-rating";
 
 function SingleProduct() {
   const productId = useParams();
   const { id } = productId;
 
   const [value, setValue] = useState("");
+
   const dispatch = useDispatch();
 
   function handleCart() {
@@ -36,12 +38,12 @@ function SingleProduct() {
   return (
     <>
       <div
-        style={{ width: "100%", height: "100vh" }}
+        style={{ width: "100%", height: "100%" }}
         className="d-flex align-items-center justify-content-center "
       >
         <div
-          className="card position-relative"
-          style={{ width: "18rem", padding: "15px" }}
+          className="card container position-relative"
+          style={{ padding: "15px" }}
         >
           <Link to="/">
             <HighlightOffIcon
@@ -55,63 +57,76 @@ function SingleProduct() {
             />
           </Link>
 
-          <img
-            src={image}
-            style={{
-              width: "180px",
-              height: "180px",
-              objectFit: "contain",
-              aspectRatio: "3/2",
-              margin: "0 auto 0"
-            }}
-            className="card-img-top"
-            alt="..."
-          />
-          <div className="card-body">
-            <h6 className="card-title">{title}</h6>
-            <p style={{ fontSize: "11px" }} className="card-text">
-              {description}
-            </p>
-          </div>
-          <ul className="list-group list-group-flush">
-            <li style={{ fontSize: "12px" }} className="list-group-item">
-              Category:- {category}
-            </li>
-            <li style={{ fontSize: "12px" }} className="list-group-item">
-              Price:- {`$${price}`}
-            </li>
-            <li style={{ fontSize: "12px" }} className="list-group-item">
-              Rating:- {rating && rating.rate}
-            </li>
-          </ul>
+          <div className="d-flex">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "280px",
+                height: "280px",
+                margin: "0 20px"
+              }}
+            >
+              <img
+                src={image}
+                style={{
+                  objectFit: "contain",
+                  aspectRatio: "3/2",
+                  margin: "0 auto 0"
+                }}
+                className="card-img-top"
+                alt="..."
+              />
+            </div>
+            <div className="card-body">
+              <h4 className="card-title">{title}</h4>
+              <p style={{ fontSize: "11px" }} className="card-text">
+                {description}
+              </p>
+              <div></div>
+              <ul className="list-group list-group-flush ">
+                <li style={{ fontSize: "12px", listStyle: "none" }}>
+                  Category:- {category}
+                </li>
+                <li style={{ fontSize: "12px", listStyle: "none" }}>
+                  Price:- {`$${price}`}
+                </li>
+                <li style={{ fontSize: "12px", listStyle: "none" }}>
+                  {/* Rating:- {rating && rating.rate} */}
+                  <Rating initialValue={rating && rating.rate} />
+                </li>
+              </ul>
 
-          <div className="mt-3" style={{ gap: "10px", display: "flex" }}>
-            <button
-              onClick={handleCart}
-              className="w-50  p-2"
-              style={{
-                border: "none",
-                backgroundColor: "#ffc107",
-                color: "#000",
-                borderRadius: "10px",
-                fontSize: "13px"
-              }}
-            >
-              Add Cart
-            </button>
-            <button
-              onClick={hanleWish}
-              className="w-50 p-2"
-              style={{
-                border: "none",
-                backgroundColor: "pink",
-                color: "black",
-                borderRadius: "10px",
-                fontSize: "13px"
-              }}
-            >
-              Favorite
-            </button>
+              <div className="mt-3" style={{ gap: "10px", display: "flex" }}>
+                <button
+                  onClick={handleCart}
+                  className="w-50  p-2"
+                  style={{
+                    border: "none",
+                    backgroundColor: "#ffc107",
+                    color: "#000",
+                    borderRadius: "10px",
+                    fontSize: "13px"
+                  }}
+                >
+                  Add Cart
+                </button>
+                <button
+                  onClick={hanleWish}
+                  className="w-50 p-2"
+                  style={{
+                    border: "none",
+                    backgroundColor: "pink",
+                    color: "black",
+                    borderRadius: "10px",
+                    fontSize: "13px"
+                  }}
+                >
+                  Favorite
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

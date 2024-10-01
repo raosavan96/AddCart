@@ -9,17 +9,36 @@ import {
   MDBRow,
   MDBTypography
 } from "mdb-react-ui-kit";
+import { Rating } from "react-simple-star-rating";
 import { useDispatch } from "react-redux";
-import { deleteFun } from "../../Features/CartSlice/CartSlice";
+import {
+  decremItems,
+  deleteFun,
+  increItems
+} from "../../Features/CartSlice/CartSlice";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function ItemCart(props) {
   const dispatch = useDispatch();
   const { title, image, category, price, rating, qunatity, id } =
     props.valueItem;
+  const [inputValue, setInputValue] = useState(qunatity);
 
   function handleDeletePro() {
     dispatch(deleteFun(id));
+  }
+
+  function handleItemDecre() {
+    let decreIn = inputValue - 1;
+    setInputValue(decreIn);
+    dispatch(decremItems({ id, qunatity: decreIn }));
+  }
+
+  function handleItemIcre() {
+    let increIn = inputValue + 1;
+    setInputValue(increIn);
+    dispatch(increItems({ id, qunatity: increIn }));
   }
 
   return (
@@ -54,7 +73,9 @@ function ItemCart(props) {
                 <span className="text-muted">category: {category}</span>
               </p>
 
-              <p className="text-muted">Rating: {rating && rating.rate}</p>
+              <p className="text-muted">
+                <Rating initialValue={rating && rating.rate} size={25} />
+              </p>
             </MDBCol>
             <MDBCol
               md="3"
@@ -62,19 +83,14 @@ function ItemCart(props) {
               xl="2"
               className="d-flex align-items-center justify-content-around"
             >
-              <MDBBtn color="link" className="px-2">
+              <MDBBtn onClick={handleItemDecre} color="link" className="px-2">
                 <MDBIcon fas icon="minus" />
               </MDBBtn>
 
-              <MDBInput
-                min={0}
-                defaultValue={qunatity}
-                type="number"
-                size="sm"
-              />
+              <MDBInput min={0} value={inputValue} type="number" size="sm" />
 
               <MDBBtn color="link" className="px-2">
-                <MDBIcon fas icon="plus" />
+                <MDBIcon onClick={handleItemIcre} fas icon="plus" />
               </MDBBtn>
             </MDBCol>
             <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
