@@ -23,12 +23,7 @@ export const cartSlice = createSlice({
       }
     },
     deleteFun: (state, action) => {
-      const deleteItem = state.value.findIndex(
-        (value) => value.id === action.payload
-      );
-      if (deleteItem !== -1) {
-        state.value.splice(deleteItem, 1);
-      }
+      state.value = state.value.filter((value) => value.id !== action.payload);
     }
   }
 });

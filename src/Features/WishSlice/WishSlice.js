@@ -16,13 +16,9 @@ export const wishSlice = createSlice({
         state.value.push({ ...action.payload });
       }
     },
+
     wishDelete: (state, action) => {
-      const deleteWish = state.value.findIndex(
-        (value) => value.id === action.payload
-      );
-      if (deleteWish !== -1) {
-        state.value.splice(deleteWish, 1);
-      }
+      state.value = state.value.filter((value) => value.id !== action.payload);
     }
   }
 });
