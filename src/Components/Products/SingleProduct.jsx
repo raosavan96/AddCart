@@ -5,6 +5,7 @@ import { cartFun } from "../../Features/CartSlice/CartSlice";
 import { wishFun } from "../../Features/WishSlice/WishSlice";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { Rating } from "react-simple-star-rating";
+import ZoomPic from "./ZoomPic";
 
 function SingleProduct() {
   const productId = useParams();
@@ -58,7 +59,8 @@ function SingleProduct() {
           </Link>
 
           <div className="d-flex single_page">
-            <div className="div_1"
+            <div
+              className="div_1"
               style={{
                 display: "flex",
                 justifyContent: "center",
@@ -68,7 +70,9 @@ function SingleProduct() {
                 margin: "0 20px"
               }}
             >
-              <img
+              <ZoomPic zoompic={value} />
+
+              {/* <img
                 src={image}
                 style={{
                   objectFit: "contain",
@@ -77,9 +81,9 @@ function SingleProduct() {
                 }}
                 className="card-img-top"
                 alt="..."
-              />
+              /> */}
             </div>
-            <div className="card-body div_2" style={{width:"75%"}}>
+            <div className="card-body div_2" style={{ width: "75%" }}>
               <h4 className="card-title">{title}</h4>
               <p style={{ fontSize: "11px" }} className="card-text">
                 {description}
@@ -92,8 +96,15 @@ function SingleProduct() {
                 <li style={{ fontSize: "12px", listStyle: "none" }}>
                   Price:- {`$${price}`}
                 </li>
-                <li style={{ fontSize: "12px", listStyle: "none", margin:"15px auto 0" , display:"flex", justifyContent:"center"}}>
-                 
+                <li
+                  style={{
+                    fontSize: "12px",
+                    listStyle: "none",
+                    margin: "15px auto 0",
+                    display: "flex",
+                    justifyContent: "center"
+                  }}
+                >
                   <Rating initialValue={rating && rating.rate} size={20} />
                 </li>
               </ul>

@@ -5,6 +5,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import IconButton from "@mui/material/IconButton";
 import Favorite from "@mui/icons-material/Favorite";
 import { useSelector } from "react-redux";
+import ZoomPic from "./../Products/ZoomPic";
 
 function Navbar() {
   const [countItem, setCountItem] = useState("0");
@@ -20,7 +21,7 @@ function Navbar() {
     <>
       <>
         <nav className="navbar navbar-expand-md bg-body-tertiary">
-          <div className="container-fluid " style={{position:"relative"}}>
+          <div className="container-fluid " style={{ position: "relative" }}>
             <Link className="navbar-brand" to="#">
               Navbar
             </Link>
@@ -50,6 +51,12 @@ function Navbar() {
                 <li className="nav-item">
                   <Link className="nav-link active" to="/">
                     Products
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="nav-link active" to="/zoompic">
+                    ZoomPic
                   </Link>
                 </li>
 

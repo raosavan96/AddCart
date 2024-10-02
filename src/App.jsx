@@ -6,7 +6,8 @@ import MainProducts from "./Components/Products/MainProducts";
 import Cart from "./Components/Products/Cart";
 import Wishlist from "./Components/Products/Wishlish/Wishlist";
 import SingleProduct from "./Components/Products/SingleProduct";
-import "./App.css"
+import "./App.css";
+import ZoomPic from "./Components/Products/ZoomPic";
 
 function App() {
   const [product, setProduct] = useState([]);
@@ -29,13 +30,14 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/home" element={<Home />} />
-          <Route
-            path="/"
-            element={<MainProducts productData={product} />}
-          />
+          <Route path="/" element={<MainProducts productData={product} />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wish" element={<Wishlist />} />
-          <Route path="/singleproduct/:id" element={<SingleProduct productData={product} />} /> 
+          <Route
+            path="/singleproduct/:id"
+            element={<SingleProduct productData={product} />}
+          />
+          {/* <Route path="/zoompic" element={<ZoomPic />} /> */}
         </Routes>
       </BrowserRouter>
     </>
