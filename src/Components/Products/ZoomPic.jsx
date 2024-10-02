@@ -42,7 +42,7 @@ function ZoomPic(props) {
             />
           </div>
         </div>
-        <div className="p-5 column details position-absolute z-1 zoom_img" style={{width:"450px",height:"450px", top: "-150px", right:"-510px", backgroundColor:"#ccc"}}></div>
+        <div className="p-5 column details position-absolute z-1 zoom_img" style={{width:"450px",height:"450px", top: "-150px", right:"-510px"}}></div>
       </div>
     </>
   ); 
