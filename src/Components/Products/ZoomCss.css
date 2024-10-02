@@ -101,10 +101,31 @@ h1 {
     color: #ff6900;
     opacity: 0.8;
   }
+
+  @media only screen and (max-width: 992px) {
+  
+    #wishlist-container, #buy-container {
+      padding: 0 0 15px 0;
+    }
+
+    .zoom_img {
+      width: 350px !important;
+      height: 350px !important;
+      right: -350px !important;
+      top: -90px !important;
+    }
+  }
   
   @media only screen and (max-width: 769px) {
   
     #wishlist-container, #buy-container {
       padding: 0 0 15px 0;
     }
+
+    .zoom_img {
+      width: 250px !important;
+      height: 250px !important;
+      right: -26px !important;
+      top: 220px !important;
+  }
   }
