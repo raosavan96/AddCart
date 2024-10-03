@@ -21,9 +21,9 @@ import { useState } from "react";
 
 function ItemCart(props) {
   const dispatch = useDispatch();
-  const { title, image, category, price, rating, qunatity, id } =
+  const { title, image, category, price, rating, quantity, id } =
     props.valueItem;
-  const [inputValue, setInputValue] = useState(qunatity);
+  const [inputValue, setInputValue] = useState(quantity);
 
   function handleDeletePro() {
     dispatch(deleteFun(id));
@@ -32,13 +32,13 @@ function ItemCart(props) {
   function handleItemDecre() {
     let decreIn = inputValue - 1;
     setInputValue(decreIn);
-    dispatch(decremItems({ id, qunatity: decreIn }));
+    dispatch(decremItems({ id, quantity: decreIn }));
   }
 
   function handleItemIcre() {
     let increIn = inputValue + 1;
     setInputValue(increIn);
-    dispatch(increItems({ id, qunatity: increIn }));
+    dispatch(increItems({ id, quantity: increIn }));
   }
 
   return (
@@ -95,7 +95,7 @@ function ItemCart(props) {
             </MDBCol>
             <MDBCol md="3" lg="2" xl="2" className="offset-lg-1">
               <MDBTypography tag="h5" className="mb-0">
-                {`$${(price * qunatity).toFixed(2)}`}
+                {`$${(price * quantity).toFixed(2)}`}
               </MDBTypography>
             </MDBCol>
             <MDBCol md="1" lg="1" xl="1" className="text-end">

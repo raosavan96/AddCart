@@ -137,6 +137,7 @@ function SingleProduct() {
                   Favorite
                 </button>
               </div>
+           
             </div>
           </div>
         </div>

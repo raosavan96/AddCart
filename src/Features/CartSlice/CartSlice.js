@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: JSON.parse(localStorage.getItem("productscart")) || []
+  value: JSON.parse(localStorage.getItem("productscart")) || [],
+  totalPrice: 0,
+  totalQuantity: 0
 };
 
 export const cartSlice = createSlice({
@@ -16,10 +18,10 @@ export const cartSlice = createSlice({
       if (find != -1) {
         state.value[find] = {
           ...state.value[find],
-          qunatity: state.value[find].qunatity + 1
+          quantity: state.value[find].quantity + 1
         };
       } else {
-        state.value.push({ ...action.payload, qunatity: 1 });
+        state.value.push({ ...action.payload, quantity: 1 });
       }
       localStorage.setItem("productscart", JSON.stringify(state.value));
     },
@@ -33,7 +35,7 @@ export const cartSlice = createSlice({
       );
 
       if (find !== -1) {
-        state.value[find].qunatity = action.payload.qunatity;
+        state.value[find].quantity = action.payload.quantity;
         localStorage.setItem("productscart", JSON.stringify(state.value));
       }
     },
@@ -43,13 +45,31 @@ export const cartSlice = createSlice({
       );
 
       if (decreFind !== -1) {
-        state.value[decreFind].qunatity = action.payload.qunatity;
+        state.value[decreFind].quantity = action.payload.quantity;
         localStorage.setItem("productscart", JSON.stringify(state.value));
       }
+    },
+    cartTotalItem: (state) => {
+      const { totalPrice, totalQuantity } = state.value.reduce(
+        (cartTotal, cartItem) => {
+          console.log(cartItem)
+          const { price, quantity } = cartItem;
+          const itemTotal = price * quantity;
+          cartTotal.totalPrice += itemTotal;
+          cartTotal.totalQuantity += quantity;
+          return cartTotal;
+        },
+        {
+          totalPrice: 0,
+          totalQuantity: 0
+        }
+      );
+      state.totalPrice = totalPrice.toFixed(2);
+      state.totalQuantity = totalQuantity;
     }
   }
 });
 
-export const { cartFun, deleteFun, increItems, decremItems } =
+export const { cartFun, deleteFun, increItems, decremItems, cartTotalItem } =
   cartSlice.actions;
 export default cartSlice.reducer;

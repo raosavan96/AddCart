@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MDBBtn,
   MDBCard,
@@ -9,10 +9,17 @@ import {
   MDBTypography
 } from "mdb-react-ui-kit";
 import ItemCart from "./ItemCart";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cartTotalItem } from "../../Features/CartSlice/CartSlice";
 
 export default function ProductCards() {
   const itemCartDate = useSelector((state) => state.cart.value);
+  const cartTotal = useSelector((state) => state.cart);
+  // console.log(cartTotal);
+
+  const dispatch = useDispatch();
+
+  dispatch(cartTotalItem());
 
   return (
     <section style={{ height: "100%" }}>
@@ -43,19 +50,22 @@ export default function ProductCards() {
                   <ItemCart valueItem={value} />
                 ))}
 
-                {/* <MDBCard className="mb-4">
-                  <MDBCardBody className="p-4 d-flex flex-row">
-                    <MDBInput
-                      label="Discound code"
-                      wrapperClass="flex-fill"
-                      size="lg"
-                    />
-                    <MDBBtn className="ms-3" color="warning" outline size="lg">
-                      Apply
-                    </MDBBtn>
+                <MDBCard className="mb-4 py-2">
+                  <MDBCardBody>
+                    <div className="d-flex justify-content-end">
+                      <span>
+                        {" "}
+                        <p className="m-0 me-3">Total Price:-</p>
+                      </span>
+                      <span>
+                        {" "}
+                        <h5 style={{ textAlign: "right", margin: "0" }}>
+                          {cartTotal.totalPrice}
+                        </h5>
+                      </span>
+                    </div>
                   </MDBCardBody>
-                </MDBCard> */}
-
+                </MDBCard>
                 <MDBCard>
                   <MDBCardBody>
                     <MDBBtn className="ms-3" color="warning" block size="lg">

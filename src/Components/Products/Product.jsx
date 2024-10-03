@@ -39,7 +39,7 @@ export default function Product(props) {
         <Card
           sx={{
             maxWidth: 300,
-            height: 330,
+            height: 340,
             overflow: "hidden",
             position: "relative",
             margin: "0 auto"
@@ -72,7 +72,7 @@ export default function Product(props) {
               title={title}
             />
           </Link>
-          <CardContent className="pt-0">
+          <CardContent className="pt-0 mt-2">
             <Typography
               gutterBottom
               variant="h6"
